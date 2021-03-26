@@ -3,28 +3,24 @@
     <head>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <title>Chapter 2: Data</title>
+    <title>第二章：数据</title>
     </head>
     <body>
     
-    <h1>Data</h1>
+    <h1>数据</h1>
     
     <p>
-    We will define four kinds of object to begin with:
+        我们将首先定义四种对象：
     <dl>
-     <dt>Integer</dt>
-     <dd>A number. For example: 3, -9, 0.</dd>
-     <dt>Symbol</dt>
-     <dd>A name consisting of a string of characters. For
-      example: <code>FOO</code>, <code>BAR</code>, <code>ADD-TWO</code>.
-      We will normalize characters to upper-case in this project, but this
-      is not strictly necessary.</dd>
+     <dt>整数</dt>
+     <dd>数字。 例如：3, -9, 0。</dd>
+     <dt>符号</dt>
+     <dd>由字符串组成的名称。例如：<code>FOO</code>, <code>BAR</code>, <code>ADD-TWO</code>.
+        我们将在此项目中将字符规范化为大写，但这不是绝对必要的。</dd>
      <dt><code>NIL</code></dt>
-     <dd>Represents "nothing". A bit like <code>NULL</code> in C and other
-      languages.</dd>
-     <dt>Pair</dt>
-     <dd>A pair consists of two elements, which for historical reasons are
-      called <i>car</i> and <i>cdr</i>. Both can hold either an integer, a
+     <dd>代表“无”。 有点像C语言和其他语言中的<code>NULL</code>。</dd>
+     <dt>对</dt>
+     <dd>对由两个元素组成，出于历史原因，它们被称为 <i>car</i> 和 <i>cdr</i>. Both can hold either an integer, a
       symbol, <code>NIL</code>, or a <em>reference</em> to another pair.
       The types of each element may be different.</dd>
     </dl>
