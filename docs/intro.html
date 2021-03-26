@@ -12,67 +12,37 @@
     <p>
         理解事物如何工作的最好方法是尝试自己构建它。阅读别人的解释可能会满足您的好奇心，但是如果没有陷入所有小陷阱的经验，就很难理解<em>为什么</em>某些事物是以某种方式设计的。
     </p>
-    
+
     <p>
-    It's been said that every would-be programmer should write a compiler.
-    While I think this is good advice (although I haven't followed it myself),
-    there is so much effort involved just in parsing a language such as C
-    that any potential insights risk getting lost in a mire of details.
-    Perhaps creating an interpreter for some simple language would be a good
-    first step.
+        有人说，每个将来的程序员都应该编写一个编译器。尽管我认为这是个不错的建议（尽管我自己并没有遵循），但是在解析诸如C之类的语言时需要付出大量的努力，以至于任何潜在的见解都有可能迷失在细节中。也许为一些简单的语言创建一个解释器将是一个很好的第一步。
     </p>
     
     <p>
-    I first started playing around with LISP a good few years ago, yet much
-    later than I should have. This led me to the classic lecture series
-    <a href="http://groups.csail.mit.edu/mac/classes/6.001/abelson-sussman-lectures/">
-    Structure and Interpretation of Computer Programs</a>. If you have the
-    next 24 hours free and haven't seen the videos already, go watch them now.
+        早在几年前，我就开始与LISP一起玩耍，但是比我本来应该晚得多。这使我进入了经典的讲座系列<a href="http://groups.csail.mit.edu/mac/classes/6.001/abelson-sussman-lectures/">“计算机程序的结构和解释”</a>。如果您在接下来的24小时有空，还没有看过这些视频，请立即观看。
     </p>
     
     <p>
-    The course covers many topics, but the second half shows in detail how
-    to evaluate LISP, first by implementing a simple version of
-    <code>eval</code> in LISP itself. I figured that this would translate
-    well into C, and so decided to try creating my own implementation
-    of LISP.
+        该课程涵盖许多主题，但是下半部分将详细介绍如何评估LISP，首先是通过eval在LISP本身中实现一个简单的版本 。我认为这可以很好地转换为C，因此决定尝试创建自己的LISP实现。
     </p>
     
     <p>
-    It was really easy.
+        真的很简单。
     </p>
     
     <p>
-    This article is an attempt to share the process by which I built my
-    implementation, and the chapters occur roughly in the order in which I
-    did things. Why not follow along and create your own version in your
-    language of choice?<a href="#f1"><sup>*</sup></a>
+        本文试图共享构建实施过程的过程，各章的执行顺序大致相同。为什么不遵循并以您选择的语言创建自己的版本？<a href="#f1"><sup>*</sup></a>
+    </p>
+
+    <p>
+        作为一名专业程序员（ha，ha），我将大部分时间都花在编写C和C ++上。其余大多数是Java。有很多语言在那里，每个都有自己的优点值得商榷，但我想证明是多么简单的一个LISP机可-甚至建在低层次的语言为C.见约翰麦卡锡的<a href="http://www-formal.stanford.edu/jmc/history/lisp/lisp.html">LISP的历史</a>了开拓者的故事。
     </p>
     
     <p>
-    As a professional programmer <small>(ha, ha)</small>, I spend the majority
-    of my time writing C and C++. Most of the rest is Java. There are many
-    languages out there, each with their own debatable merits, but I'd like
-    to demonstrate just how simple a LISP machine can be &mdash; even built
-    in as low-level a language as C. See John McCarthy's
-    <a href="http://www-formal.stanford.edu/jmc/history/lisp/lisp.html">
-    History of LISP</a> for the story of the pioneers.
+        所以这是我的LISP的玩具实现。我已经从各种方言中借用了功能，但是它比Common LISP更接近Scheme。差异是微不足道的，以至于转换不需要对解释程序进行实质性的更改。如果您不熟悉LISP，请不要担心。我将在前进的过程中定义所有内容。
     </p>
     
     <p>
-    So here is my toy implementation of LISP. I've borrowed features from
-    various dialects, but it's closer to Scheme than Common LISP. The
-    differences are trivial enough that changing over would not require
-    substantial changes to the interpreter. Don't worry if you're not familiar
-    with LISP; I will define everything as I go along.
-    </p>
-    
-    <p>
-    It is not meant to be the smallest possible implementation, nor the
-    most efficient, nor the most complete; it could however be described as
-    lazy. My goal was to write robust, easy-to-read code that does exactly
-    what it needs to, and no more, and I hope that it conveys how little
-    effort is required to construct an incredibly powerful environment like LISP.
+        它既不是最小的实现，也不是最高效的，也不是最完整的实现。但是它可以说是懒惰的。我的目标是编写功能强大，易于阅读的代码，该代码完全满足其需要，并且不再需要执行任何其他操作，并且我希望它可以传达构建诸如LISP之类的功能强大的环境所需的工作量。
     </p>
     
     <hr />
@@ -80,9 +50,7 @@
     <small>
     
     <p id="f1">
-    <sup>*</sup> If you are using a fancy language which supports something like
-    <code>eval</code>, it would be cool to expose the native datatypes to
-    the LISP environment.
+    <sup>*</sup> 如果使用的是支持像的奇特语言<code>eval</code>，将本地数据类型暴露给LISP环境将很酷。
     </p>
     
     </small>
