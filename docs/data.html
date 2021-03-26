@@ -20,9 +20,8 @@
      <dt><code>NIL</code></dt>
      <dd>代表“无”。 有点像C语言和其他语言中的<code>NULL</code>。</dd>
      <dt>对</dt>
-     <dd>对由两个元素组成，出于历史原因，它们被称为 <i>car</i> 和 <i>cdr</i>. Both can hold either an integer, a
-      symbol, <code>NIL</code>, or a <em>reference</em> to another pair.
-      The types of each element may be different.</dd>
+     <dd>对由两个元素组成，出于历史原因，它们被称为 <i>car</i> 和 <i>cdr</i>. 两者都可以容纳整数, 符号, <code>NIL</code>, 或者其他“对”的 <em>引用</em>。
+        每个元素的类型可能不同。</dd>
     </dl>
     Integers, symbols and <code>NIL</code> are called <i>simple data</i>.
     The term <i>atom</i> can refer to either a simple datum or a pair
@@ -30,18 +29,13 @@
     </p>
     
     <p>
-    Note that integers and symbols are <em>immutable</em>, so we can think
-    of two integers with the same value as being the same object. This is
-    particularly useful for symbols, because it allows us to test for
-    equality by comparing pointers.
+        请注意，整数和符号是<em>不可变的</em>，因此我们可以将具有相同值的两个整数视为同一对象。这对符号特别有用，因为它允许我们通过比较指针来测试是否相等。
     </p>
     
-    <h4>Implementation</h4>
+    <h4>实现</h4>
     
     <p>
-    Let's declare some C types to hold our data. There are many clever ways
-    to store LISP objects efficiently, but for this implementation we will
-    stick to a very simple scheme <small>[please excuse the pun]</small>.
+        让我们声明一些C类型来保存我们的数据。有许多聪明的方法可以有效地存储LISP对象，但是对于此实现，我们将坚持一个非常简单的方案 <small>[请原谅，哈哈]</small>.
     </p>
     
     <pre class="c">
@@ -68,7 +62,7 @@
     </pre>
     
     <p>
-    A few macros will be handy:
+    一些宏将很方便：
     <pre class="c">
     #define car(p) ((p).value.pair-&gt;atom[0])
     #define cdr(p) ((p).value.pair-&gt;atom[1])
